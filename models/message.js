@@ -55,7 +55,7 @@ exports.create = (author,newMsg, cb) => {
       author: author,
       text: newMsg,
       date: Date.now(),
-      createAt: moment().format('MMMM Do YYYY'),
+      createAt: moment().format('MMMM Do YYYY, h:mm:ss a'),
       id: uuid()
     }
     messages.push(msgObj);

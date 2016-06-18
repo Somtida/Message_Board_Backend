@@ -1,9 +1,59 @@
 body{
-  height: 500px;
-  text-align: center;
   background: linear-gradient(to bottom right, #00ffff, #00bfff);
+}
+.jumbotron{
+  color: #000;
+  text-align: center;
 }
 .container{
   background-color: #000;
   border-radius: 4px;
+  color: #fff;
+  width: 80%;
+}
+.top{
+  text-align: center;
+
+}
+.createText{
+  width: 400px;
+
+}
+input{
+  padding: 5px;
+}
+.messageBox{
+  margin: 0 auto;
+  width: 90%;
+  text-decoration: left;
+  font-size: 1.4em;
+  color: green;
+  padding: 15px;
+  background-color: #fff;
+}
+.msgInfo{
+  border-bottom: 1px solid #eee;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.msgInfo .messageTime{
+  font-size: 0.7em;
+  color:#33cc33;
+}
+.messageInfo{
+  display: none;
+}
+.msgInfo .messageAuthor{
+  font-size: 0.8em;
+}
+.msgInfo .messageText{
+  font-size: 1.1em;
+  padding-left: 20px;
+}
+.editText{
+  margin-right: 5px;
+}
+.modifyOption{
+  padding-top: 20px;
+
 }
