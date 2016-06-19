@@ -1,35 +1,75 @@
 body{
-  background: linear-gradient(to bottom right, #00ffff, #00bfff);
+  background-color: #00334d;
 }
 .jumbotron{
   color: #000;
-  text-align: center;
+  background: url(http://www.clementinecreative.co.za/wp-content/uploads/2012/08/free-blog-headers.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  font-weight: bolder;
+  /*background: linear-gradient(to bottom right, #ff3399, #BD1550);*/
+
+}
+.panel-heading{
+  text-align: right;
 }
 .container{
-  background-color: #000;
+  background-color: #00334d;
   border-radius: 4px;
   color: #fff;
   width: 80%;
+  padding: 15px;
+  margin: 0 auto;
 }
 .top{
   text-align: center;
-
+}
+.bottom{
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 .createText{
-  width: 400px;
-
+  width: 60%;
+}
+.createAuthor{
+  width: 20%;
+}
+.newMsg{
+  width: 500px;
+}
+.newBox{
+  font-size: 1.1em;
+}
+.image{
+  width: 150px;
+  height: 200px;
+}
+.modal-content{
+  height: 300px;
+  padding: 50px;
+  margin: 20px;
+  font-size: 1.3em;
+  text-align: center;
+}
+.cancel, .saveNewMsg{
+  margin-bottom: 25px;
+}
+label{
+  font-size: 1.2em;
 }
 input{
   padding: 5px;
 }
 .messageBox{
-  margin: 0 auto;
-  width: 90%;
+  /*margin: 0 auto;*/
+  maring-top: 10px;
+  width: 100%;
   text-decoration: left;
   font-size: 1.4em;
   color: green;
   padding: 15px;
   background-color: #fff;
+  border-radius: 5px;
 }
 .msgInfo{
   border-bottom: 1px solid #eee;
@@ -40,7 +80,7 @@ input{
   font-size: 0.7em;
   color:#33cc33;
 }
-.messageInfo{
+.newMsgBox, .messageInfo{
   display: none;
 }
 .msgInfo .messageAuthor{

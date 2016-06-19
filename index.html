@@ -4,15 +4,40 @@
   <meta charset="UTF-8">
   <title>ExpressJS</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
   <link rel="stylesheet" href="style.css">
-  <script   src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
+  <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="main.js"></script>
 </head>
 <body>
+  <!-- start modal -->
+  <div class="modal fade editModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+  <!-- end modal -->
+  <!-- template modal -->
+  <div class="newMsgBox">
+    <label for="">Edit: </label>
+    <textarea cols="20" rows="4" class="newMsg"></textarea>
+    <button class="btn btn-success saveNewMsg">SAVE</button>
+    <button class="btn btn-primary cancel">CANCEL</button>
+  </div>
+  <!-- end template modal -->
+
+
   <div class="container">
     <div class="jumbotron">
-      <h1>Message Board Backend</h1>
+      <h1>Message Board</h1>
     </div>
+
+
+
 
     <div class="alert alert-info top">
       <lable>Author: </lable>
@@ -24,12 +49,22 @@
     </div>
     <br>
 
-    <div class="content">
+    <div class="panel panel-primary content">
+    <div class="panel-heading">
+      <!-- add pannel -->
+      <label for="">sort by: </label>
+      <select name="" id="">
+        <option value="date">date</option>
+        <option value="author">author</option>
+        <option value="message">message</option>
+      </select>
+    </div>
+    <div class="panel-body">
       <div class="messageBox">
 
       </div>
     </div>
-
+    </div>
     <!-- template -->
     <div class="messageInfo">
       <div class="row">
@@ -42,46 +77,18 @@
 
         </div>
         <div class="col-xs-3 col-md-3 modifyOption">
-          <span><button class="btn btn-warning editText">EDIT</button></span>
+          <span><button class="btn btn-warning editText" data-toggle="modal" data-target=".editModal">EDIT</button></span>
           <!-- <span><button class="btn btn-danger deleteText">DELETE</button></span> -->
-          <span><button class="btn btn-danger deleteText" data-toggle="modal" data-target="#editModal" data-whatever="@fat">DELETE</button></span>
+          <span><button class="btn btn-danger deleteText">DELETE</button></span>
         </div>
       </div>
     </div>
 
-  <!-- start modal -->
-  <div class="bd-example">
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal" data-whatever="@fat">Open modal for @fat</button>
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h4 class="modal-title" id="editModalLabel">New message</h4>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="form-group">
-              <label for="recipient-name" class="form-control-label">Recipient:</label>
-              <input type="text" class="form-control" id="recipient-name">
-            </div>
-            <div class="form-group">
-              <label for="message-text" class="form-control-label">Message:</label>
-              <textarea class="form-control" id="message-text"></textarea>
-            </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
-        </div>
-      </div>
+    <div class="alert alert-info bottom">
+
     </div>
-  </div>
-</div>
-  <!-- end modal -->
+
+
 
 
   </div>

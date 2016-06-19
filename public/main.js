@@ -5,30 +5,63 @@ function init(){
   $('.sendButton').click(createMessage);
   $('.messageBox').on('click','.deleteText', deleteText);
   $('.messageBox').on('click','.editText', editText);
+  $('.modal-content').on('click','.saveNewMsg', saveNewMsg);
+  $('.modal-content').on('click','.cancel', cancelNewMsg);
+
+}
+
+function cancelNewMsg(){
+  $('.editModal').modal('toggle');
+}
+
+
+function saveNewMsg(){
+  let id = $(this).parent().data('id');
+  console.log("id: ",id);
+  let newMsg = $('.newMsg').val();
+  console.log("newMsg: ",newMsg);
+  $.ajax({
+    method: 'PUT',
+    url: `/messages/${id}/"${newMsg}"`
+  })
+  .done(()=>{
+    console.log("save edited Text");
+    $('.editModal').modal('toggle');
+    getMessage();
+  })
+  .fail(()=>{
+    console.log("error: save edited Text");
+  })
 }
 
 function editText(){
+  let id = $(this).parent().parent().parent().parent().data('msgId');
+  console.log("id: ",id);
 
-  // $.ajax({
-  //   method: "PUT",
-  //   url:``,
-  //   data: {
-  //     id: id,
-  //     newMsg: newText
-  //   }
-  // })
+  console.log("in editText");
+  let msg = $(this).parent().parent().parent().parent().data('msgText');
+  console.log("msg: ",msg);
+  let $newMessage = $('.newMsgBox').clone();
+  $newMessage.addClass('.newBox').removeClass('newMsgBox');
+  $newMessage.data('id',id);
+  $newMessage.find('.newMsg').val(msg);
+  $('.modal-content').empty().append($newMessage);
+
+
+
 }
 
 function deleteText(){
   // var authorName = $(this).parent().parent().parent().find('.messageArea').find('.messageAuthor').text();
   //console.log("authorName: ",authorName);
-  var id = $(this).data('msgId');
-  console.log("id: ",id);
+  var id = $(this).parent().parent().parent().parent().data('msgId');
+  // console.log("id: ",id);
   $.ajax({
-    method:"DELETE",
+    method:'DELETE',
     url: `/messages/${id}`
   })
   .done(()=>{
+    console.log("deleted");
     getMessage();
   })
   .fail(()=>{
@@ -47,8 +80,11 @@ function createMessage(){
     $('.createAuthor').text('');
     $('.createText').text('');
     getMessage();
+    $('.createAuthor').val('');
+    $('.createText').val('');
+    $('.createStatus').fadeOut();
   })
-  .fai(()=>{
+  .fail(()=>{
     console.log("error: createMessage");
   })
 }
@@ -58,7 +94,8 @@ function getMessage(){
   .done( data => {
     // console.log("data: ",data);
     let $p = buildParagraph(data);
-    $('.messageBox').append($p);
+
+    $('.messageBox').empty().append($p);
   })
   .fail(()=>{
     console.log("error: getMessage");
@@ -71,8 +108,12 @@ function buildParagraph(alldata){
     $p.find('.messageAuthor').text(data.author);
     $p.data('msgId',data.id);
     $p.find('.messageText').text(data.text);
+    $p.data('msgText',data.text);
+
     if((data.text).slice(0,5) === "http://"){
+      console.log("add attr image");
       $p.find('.image').attr('src',data.text);
+      debugger;
     }
     $p.find('.messageTime').text(data.createAt);
 
