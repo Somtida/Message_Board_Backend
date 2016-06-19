@@ -7,7 +7,12 @@ function init(){
   $('.messageBox').on('click','.editText', editText);
   $('.modal-content').on('click','.saveNewMsg', saveNewMsg);
   $('.modal-content').on('click','.cancel', cancelNewMsg);
+  $('.sortby').change(sortMessage);
 
+}
+
+function sortMessage(){
+  getMessage();
 }
 
 function cancelNewMsg(){
@@ -22,7 +27,7 @@ function saveNewMsg(){
   console.log("newMsg: ",newMsg);
   $.ajax({
     method: 'PUT',
-    url: `/messages/${id}/"${newMsg}"`
+    url: `/messages/${id}/${newMsg}`
   })
   .done(()=>{
     console.log("save edited Text");
@@ -90,7 +95,15 @@ function createMessage(){
 }
 
 function getMessage(){
-  $.ajax('/messages')
+  let sortby = $('.sortby').val();
+  console.log("sortby: ",sortby);
+  let sort;
+  if( sortby == "date"){
+    sort = '/messages';
+  }else{
+    sort = '/messages?sort='+sortby;
+  }
+  $.ajax(sort)
   .done( data => {
     // console.log("data: ",data);
     let $p = buildParagraph(data);
