@@ -1,5 +1,7 @@
 $(document).ready(init);
 
+let host = '//somtida-message-board-v1.herokuapp.com/';
+
 function init(){
   getMessage();
   $('.sendButton').click(createMessage);
@@ -27,7 +29,7 @@ function saveNewMsg(){
   console.log("newMsg: ",newMsg);
   $.ajax({
     method: 'PUT',
-    url: `/messages/${id}/${newMsg}`
+    url: `${host}/messages/${id}/${newMsg}`
   })
   .done(()=>{
     console.log("save edited Text");
@@ -63,7 +65,7 @@ function deleteText(){
   // console.log("id: ",id);
   $.ajax({
     method:'DELETE',
-    url: `/messages/${id}`
+    url: `${host}/messages/${id}`
   })
   .done(()=>{
     console.log("deleted");
@@ -75,7 +77,7 @@ function deleteText(){
 }
 
 function createMessage(){
-  $.post('/messages',
+  $.post('${host}/messages',
   {
     author: $('.createAuthor').val(),
     text: $('.createText').val()
@@ -99,9 +101,9 @@ function getMessage(){
   console.log("sortby: ",sortby);
   let sort;
   if( sortby == "date"){
-    sort = '/messages';
+    sort = '${host}/messages';
   }else{
-    sort = '/messages?sort='+sortby;
+    sort = '${host}/messages?sort='+sortby;
   }
   $.ajax(sort)
   .done( data => {
