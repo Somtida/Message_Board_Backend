@@ -1,5 +1,6 @@
 body{
   background-color: #00334d;
+  font-family: sans-serif;
 }
 .jumbotron{
   color: #000;
@@ -24,15 +25,34 @@ body{
 .top{
   text-align: center;
 }
-.bottom{
+.footer{
   margin-top: 40px;
   margin-bottom: 40px;
+  padding: 20px;
+  border: 1px solid #000;
+}
+.rightfooter{
+  text-align: right;
+}
+.leftfooter{
+  text-align: left;
+  left: 10px;
+}
+.centerfooter{
+  padding-top: 7px;
+  text-align: center;
+  font-size: 1.2em;
+}
+.space{
+  margin-right: 15px;
 }
 .createText{
   width: 60%;
+  margin-bottom:-20px;
 }
 .createAuthor{
   width: 20%;
+  height: 45px;
 }
 .newMsg{
   width: 500px;
@@ -95,5 +115,5 @@ input{
 }
 .modifyOption{
   padding-top: 20px;
-
+  text-align: right;
 }

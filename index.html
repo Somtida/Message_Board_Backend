@@ -6,10 +6,17 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <!-- <link rel="stylesheet" href="https://bootswatch.com/superhero/bootstrap.min.css"> -->
   <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
   <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="main.js"></script>
+  <script>
+function textAreaAdjust(e) {
+    e.style.height = "1px";
+    e.style.height = (25+e.scrollHeight)+"px";
+}
+</script>
 </head>
 <body>
   <!-- start modal -->
@@ -43,7 +50,8 @@
       <lable>Author: </lable>
       <input type="text" class="createAuthor">
       <lable>Text: </lable>
-      <input type="text" class="createText">
+      <!-- <input type="text" class="createText" onkeypress="this.style.height = 200px;"> -->
+      <textarea class="createText" onkeyup="textAreaAdjust(this)" style="overflow:hidden"></textarea>
       <button class="btn btn-primary sendButton">Send</button>
       <div class="createStatus"></div>
     </div>
@@ -84,8 +92,35 @@
       </div>
     </div>
 
-    <div class="alert alert-info bottom">
+    <div class="alert alert-info footer">
+      <div class="row">
+        <div class="col-md-3 leftfooter">
+          <a href="https://www.linkedin.com/in/somtida-sinkamnoonsak-b40949101">
+            <span class="space"><i class="fa fa-linkedin-square fa-2x" aria-hidden="true"></i></span>
+          </a>
 
+          <a href="https://github.com/Somtida">
+            <span class="space">
+              <i class="fa fa-github fa-2x" aria-hidden="true"></i>
+            </span>
+          </a>
+        </div>
+        <div class="col-md-6 centerfooter">
+          &copy; 2016, Somtida Sinkamnoonsak
+        </div>
+        <div class="col-md-3 rightfooter">
+          <a href="https://twitter.com/AmySkns">
+            <span class="space">
+              <i class="fa fa-twitter fa-2x"></i>
+            </span>
+          </a>
+          <a href="mailto:somtida.th@gmail.com?Subject=Hello">
+            <span class="space">
+              <i class="fa fa-envelope fa-2x"></i>
+            </span>
+          </a>
+        </div>
+      </div>
     </div>
 
 
