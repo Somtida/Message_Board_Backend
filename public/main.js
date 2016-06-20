@@ -30,7 +30,7 @@ function saveNewMsg(){
   console.log("newMsg: ",newMsg);
   $.ajax({
     method: 'PUT',
-    url: `${host}/messages/${id}/${newMsg}`
+    url: `/messages/${id}/${newMsg}`
   })
   .done(()=>{
     console.log("save edited Text");
@@ -104,7 +104,7 @@ function getMessage(){
   if( sortby == "date"){
     sort = '/messages';
   }else{
-    sort = '${host}/messages?sort='+sortby;
+    sort = '/messages?sort='+sortby;
   }
   $.ajax(sort)
   .done( data => {
