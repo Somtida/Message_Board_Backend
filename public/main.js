@@ -126,7 +126,7 @@ function buildParagraph(alldata){
     $p.find('.messageText').text(data.text);
     $p.data('msgText',data.text);
 
-    if((data.text).slice(0,5) === "http://"){
+    if((data.text).slice(0,4) === "http"){
       console.log("add attr image");
       $p.find('.image').attr('src',data.text);
       debugger;
